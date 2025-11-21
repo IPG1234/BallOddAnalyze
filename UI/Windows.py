@@ -1,6 +1,7 @@
 from tkinter import *
 from tracemalloc import Frame
 import requests
+import threading
 
 class AppUI(Frame):
     def __init__(self, master=None):
@@ -16,13 +17,24 @@ class AppUI(Frame):
         self.btn01.pack()
 
     def GetData(self):
-        response = requests.get("http://127.0.0.1:8080/odd500")
+        form_data={"time":"2025-05-25"}
+        response = requests.post("http://127.0.0.1:5000/500Data/GetData")
+        # print(123)
+
+class TKThread(threading.Thread):
+    def __init__(self):
+        threading.Thread.__init__(self)
+
+    def run(self):
+        window = Tk()
+        appui=AppUI(master=window)
+        window.mainloop()
+
 
 class CreateTK():
-    window = Tk()
-    appui = AppUI(master=window)
-    window.mainloop()
-
+    def __init__(self):
+        self.TKThread=TKThread()
+        self.TKThread.start()
 
 
 

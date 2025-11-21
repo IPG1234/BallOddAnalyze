@@ -1,8 +1,8 @@
 from Base import create_app
-# import UI.Windows as BW
+from UI.Windows import CreateTK
 
 app = create_app()
+TK=CreateTK()
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8080, debug=True)
-    # BW.CreateTK()
+    app.run(host='127.0.0.1', port=5000, debug=True)

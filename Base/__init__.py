@@ -1,8 +1,9 @@
 from flask import Flask
 from Base.Browser import Browser
-
 app = Flask(__name__)
 browser = Browser()
+
+import Base.BlueprintRegister
 
 def create_app():
     global app
